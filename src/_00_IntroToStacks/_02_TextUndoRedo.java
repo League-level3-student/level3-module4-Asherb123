@@ -27,13 +27,14 @@ public class _02_TextUndoRedo implements KeyListener {
 JFrame frame = new JFrame();
 JPanel panel = new JPanel();
 JLabel label = new JLabel();
-
+String s = new String(); 
 void setup() {
 	panel.add(label);
 	frame.add(panel);
-	frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 	frame.setVisible(true);
 	frame.addKeyListener(this);
+	frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+	
 
 }
 
@@ -46,7 +47,20 @@ public void keyTyped(KeyEvent e) {
 @Override
 public void keyPressed(KeyEvent e) {
 	// TODO Auto-generated method stub
+	int backspace = 8;
+	if (e.getKeyCode()==8) {
+		
+	}
 	
+	
+	
+	
+	s+=(e.getKeyText(e.getKeyCode()));
+label.setText(s);
+frame.pack();
+
+
+
 }
 
 @Override
@@ -54,5 +68,11 @@ public void keyReleased(KeyEvent e) {
 	// TODO Auto-generated method stub
 	
 }
-
+public static void main(String[] args) {
+	
+	_02_TextUndoRedo c = new _02_TextUndoRedo();
+	
+	c.setup();
+	
+}
 }
