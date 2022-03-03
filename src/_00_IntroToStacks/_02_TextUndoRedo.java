@@ -1,7 +1,9 @@
 package _00_IntroToStacks;
 
+import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.Stack;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -31,6 +33,8 @@ String s = new String();
 void setup() {
 	panel.add(label);
 	frame.add(panel);
+	panel.setPreferredSize(new Dimension(500, 50));
+	frame.pack();
 	frame.setVisible(true);
 	frame.addKeyListener(this);
 	frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
@@ -47,21 +51,39 @@ public void keyTyped(KeyEvent e) {
 @Override
 public void keyPressed(KeyEvent e) {
 	// TODO Auto-generated method stub
-	int backspace = 8;
+	
+	char keycode = e.getKeyChar();
+	
 	if (e.getKeyCode()==8) {
 		
+		String backspace = s.substring(s.length()-1);
+		 String shorty = s.substring(0, s.length()-1 );
+		Stack<String> deleted = new Stack<String>();
+		 deleted.push(backspace);
+		 s= shorty;
+		 label.setText(s);
 	}
-	
-	
-	
-	
-	s+=(e.getKeyText(e.getKeyCode()));
-label.setText(s);
+	else {
+		s+=keycode;
+		label.setText(s);
+		
+	}
 frame.pack();
+}	
+	
 
 
 
+//frame.pack();
+private void Array() {
+	// TODO Auto-generated method stub
+	
 }
+
+
+
+
+
 
 @Override
 public void keyReleased(KeyEvent e) {
