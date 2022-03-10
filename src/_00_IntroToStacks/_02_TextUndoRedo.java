@@ -5,6 +5,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.Stack;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -30,6 +31,7 @@ JFrame frame = new JFrame();
 JPanel panel = new JPanel();
 JLabel label = new JLabel();
 String s = new String(); 
+Stack<String> deleted = new Stack<String>();
 void setup() {
 	panel.add(label);
 	frame.add(panel);
@@ -53,21 +55,32 @@ public void keyPressed(KeyEvent e) {
 	// TODO Auto-generated method stub
 	
 	char keycode = e.getKeyChar();
-	
+	String backspace = "";
+	String shorty = "";
 	if (e.getKeyCode()==8) {
 		
-		String backspace = s.substring(s.length()-1);
-		 String shorty = s.substring(0, s.length()-1 );
-		Stack<String> deleted = new Stack<String>();
+		 backspace = s.substring(s.length()-1);
+		 shorty = s.substring(0, s.length()-1 );
+		
 		 deleted.push(backspace);
 		 s= shorty;
 		 label.setText(s);
 	}
-	else {
+	
+	else if (e.getKeyCode()==37) {
+		
+		
+		s+=deleted.pop();
+		
+		label.setText(s);
+	
+	
+	}
+
+else {
 		s+=keycode;
 		label.setText(s);
-		
-	}
+		}
 frame.pack();
 }	
 	
