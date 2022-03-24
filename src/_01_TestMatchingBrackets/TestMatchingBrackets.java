@@ -13,11 +13,19 @@ public class TestMatchingBrackets {
     	
     	 for (int i = 0; i < b.length(); i++) {
     	
-    		if (b.charAt(i)=="{") {
-				
+    		if (b.charAt(i)=='{') {
+				matches.push("{");
 			}
-    		
-		}
-        return false;
+    		if (matches.size() > 0 && b.charAt(i)== '}') {
+				matches.pop();
+			}
+	 }
+       if (matches.size()==0) {
+		return true;
+	}
+       else {
+		return false;
+	}	 
+    	 
     }
 }
