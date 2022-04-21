@@ -1,6 +1,7 @@
 package _02_IntroToQueues;
 
 import java.util.ArrayDeque;
+import java.util.Random;
 import java.util.Stack;
 
 /* 
@@ -62,13 +63,55 @@ public class _01_IntroToQueue {
     	// 5. Print and remove a random number of elements, from 1 to 5 elements,
         //    from the front of the Queue. Example:
         //    "removing 3 elements from Queue: 25 57 2"
-
+        
+        Random rand = new Random();
+        
+        while (q.size() > 0 && doubles.size() > 0) {
+			
+			
+		
+       
+        int random = rand.nextInt(5)+1;
+        
+        String removednumbersthatidontlike = "";
+       
+        
+        
+        for (int i = 0; i < random; i++) {
+			
+        	
+        	
+        	
+        	removednumbersthatidontlike = removednumbersthatidontlike + q.remove()+" ";
+		
+        	 
+        	
+        }
+        
+        System.out.println("Yo look at what I removed homeboy "+ random + " things dawg " + removednumbersthatidontlike);
+        
+        
         // 6. Pop off as many elements from the stack to fill the Queue with 5
         //    elements. If there aren't enough elements in the Stack to fill the 
         //    queue, fill the queue as much as possible. 
-
-        // 7. Loop until there are no more elements in either the Stack or Queue
+       if (doubles.size() < random) {
+		
+	}
+       else {
+		
+	
+       for (int i = 0; i < random; i++) {
+			
+		
+        	double deeez =  doubles.pop();
+       
+        	q.add(deeez);
+        
+       } 
+      }  // 7. Loop until there are no more elements in either the Stack or Queue
         //    and all the elements are printed
         
+        
+   }     
     }
 }
