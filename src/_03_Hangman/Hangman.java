@@ -15,17 +15,21 @@ public class Hangman implements KeyListener {
 	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	JLabel label = new JLabel();
+	JLabel Dscore = new JLabel();
 	Stack<String> words = new Stack<>();
 	String popped = "";
 
 	void setup() {
 		panel.add(label);
+		panel.add(Dscore);
 		panel.setPreferredSize(new Dimension(500, 250));
 		frame.add(panel);
 		frame.setVisible(true);
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		frame.addKeyListener(this);
 
+		Dscore.setText(""+score);
+		
 		String randNum = JOptionPane.showInputDialog("Type any random number between 1 and 100");
 
 		int random = Integer.parseInt(randNum);
@@ -53,17 +57,43 @@ public class Hangman implements KeyListener {
 			underscore = underscore + "_";
 		}
 		label.setText(underscore);
+		score = 10;
 		frame.pack();
 	}
+int score = 10;
+	
 
-	void score(char input) {
 
+void score(char input) {
+		
+		
+		
 		char[] letters = label.getText().toCharArray();
 		
-		popped = new String(letters);
+		boolean letter = false;
 
+		for (int i = 0; i < popped.length(); i++) {
+			if (popped.charAt(i) == input) {
+				letters[i] = input;
+				letter = true;
+			}
+		}
 		
-	}
+		if (!letter) {
+			score=score-1;
+		} 
+		
+		
+		
+		String newText = new String(letters);
+		label.setText(newText);
+		frame.pack();
+	if (score <= 0) {
+				JOptionPane.showMessageDialog(null, "you suck");
+				restart();
+			}
+		Dscore.setText(""+score);
+}
 
 
 	public static void main(String[] args) {
