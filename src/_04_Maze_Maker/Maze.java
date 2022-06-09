@@ -1,6 +1,6 @@
 package _04_Maze_Maker;
 import java.awt.Graphics;
-
+mamma
 public class Maze {
     // 1. Create a 2D array of cells. Don't initialize it.
     
