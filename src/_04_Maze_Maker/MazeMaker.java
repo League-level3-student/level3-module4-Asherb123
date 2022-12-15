@@ -11,7 +11,7 @@ public class MazeMaker {
 
     private static Maze maze;
 
-    private static Random randGen = new Random();
+    private static Random rand = new Random();
     private static Stack<Cell> uncheckedCells = new Stack<Cell>();
 
     public static Maze generateMaze(int r, int c) {
@@ -23,12 +23,26 @@ public class MazeMaker {
         //    This will be the starting point. Then select a random cell along
         //    the opposite wall and remove its exterior wall. This will be the
         //    finish line.
+       
+       int randyboyposit = rand.nextInt(maze.getRows());
+       int randyboypositthesecond = rand.nextInt(maze.getRows());
         
-        // 2. select a random cell in the maze to start 
+       Cell cellypoo = maze.getCell(randyboyposit, 0);
+       Cell exitycellypoo = maze.getCell(randyboypositthesecond, maze.getCols()-1);
+       
+      cellypoo.setWestWall(false);
+       exitycellypoo.setEastWall(false);
+       // 2. select a random cell in the maze to start 
         
+      int randomcoloftherandomcellcoordinates = rand.nextInt(maze.getCols());
+     int secondrandomcoloftheramdomcellcoordinates = rand.nextInt(maze.getRows());
+     
+     Cell c3 = maze.getCell(randomcoloftherandomcellcoordinates, secondrandomcoloftheramdomcellcoordinates);
         // 3. call the selectNextPath method with the randomly selected cell
 
-        return maze;
+     selectNextPath(c3);
+        
+     return maze;
     }
 
     // 4. Complete the selectNextPathMethod
